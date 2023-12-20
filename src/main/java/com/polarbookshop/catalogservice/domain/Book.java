@@ -17,4 +17,5 @@ public record Book(
         @Positive(message = "error.books.price.negative")
         Double price
 ) {
+
 }
