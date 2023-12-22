@@ -7,6 +7,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @ConditionalOnProperty(value = "polar.test-data.active", havingValue = "true")
 public class BookDataLoader {
@@ -19,9 +21,9 @@ public class BookDataLoader {
 
     @EventListener(ApplicationReadyEvent.class)
     void loadTestData() {
-        final var book1 = new Book("1234567891", "Nothern Lights", "Lyra Silverstar", 9.9);
-        final var book2 = new Book("1234567892", "Polar Journey", "Iorek Polarson", 12.9);
-        bookRepository.save(book1);
-        bookRepository.save(book2);
+        bookRepository.deleteAll();
+        final var book1 = Book.of("1234567891", "Nothern Lights", "Lyra Silverstar", 9.9);
+        final var book2 = Book.of("1234567892", "Polar Journey", "Iorek Polarson", 12.9);
+        bookRepository.saveAll(List.of(book1, book2));
     }
 }
