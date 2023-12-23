@@ -55,3 +55,15 @@ tasks.named('test') {
 bootRun {
     systemProperty 'polar.test-data.active', 'true'
 }
+
+bootBuildImage {
+    imageName = "${project.name}"
+
+    docker {
+        publishRegistry {
+            username = project.findProperty("registryUsername")
+            password = project.findProperty("registryPassword")
+            url = project.findProperty("registryUrl")
+        }
+    }
+}
