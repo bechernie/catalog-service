@@ -1,25 +1,17 @@
 # Local development environment
 
-* Create local postgres container:
+## Start
+
+To start the local development environment, run the following command:
 
 ```shell
-docker run -d --name polar-postgres -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_DB=polardb_catalog -p 5432:5432 postgres:14.4
+tilt up
 ```
 
-* Stop local postgres container:
+## Stop
+
+Kill the running tilt process with CTRL+C, and then run the following command:
 
 ```shell
-docker stop polar-postgres
-```
-
-* Start local postgres container
-
-```shell
-docker start polar-postgres
-```
-
-* Remove local postgres container:
-
-```shell
-docker rm -fv polar-postgres
+tilt down
 ```
