@@ -7,6 +7,7 @@ plugins {
 ext {
     springCloudVersion = "2025.0.0"
     set("testKeycloakVersion", "2.3.0")
+    set("otelVersion", "1.33.3")
 }
 
 group = 'com.github.bechernie'
@@ -50,6 +51,7 @@ dependencies {
     testImplementation 'org.testcontainers:postgresql'
     runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+    runtimeOnly "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
