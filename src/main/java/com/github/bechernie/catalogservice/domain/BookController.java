@@ -33,7 +33,7 @@ public class BookController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Book post(@Valid @RequestBody Book book) {
-        log.info("Creating book: {}", book.title());
+        log.info("Creating book: {}", book);
         return bookService.addBookToCatalog(book);
     }
 
@@ -46,7 +46,7 @@ public class BookController {
 
     @PutMapping("{isbn}")
     public Book put(@PathVariable("isbn") String isbn, @Valid @RequestBody Book book) {
-        log.info("Updating book by isbn {}", isbn);
+        log.info("Updating book by isbn {}: {}", isbn, book);
         return bookService.editBookDetails(isbn, book);
     }
 }
