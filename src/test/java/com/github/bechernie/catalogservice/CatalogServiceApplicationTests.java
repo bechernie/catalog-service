@@ -91,7 +91,7 @@ class CatalogServiceApplicationTests {
                 .uri("/books")
                 .bodyValue(expectedBook)
                 .exchange()
-                .expectStatus().isForbidden();
+                .expectStatus().isUnauthorized();
     }
 
     private static KeycloakToken authenticateWith(String username, String password, WebClient webClient) {
