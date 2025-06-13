@@ -6,6 +6,7 @@ plugins {
 
 ext {
     springCloudVersion = "2025.0.0"
+    set("testKeycloakVersion", "2.3.0")
 }
 
 group = 'com.github.bechernie'
@@ -43,6 +44,9 @@ dependencies {
     testImplementation 'io.projectreactor:reactor-test'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation "com.github.dasniko:testcontainers-keycloak:${testKeycloakVersion}"
     testImplementation 'org.testcontainers:postgresql'
     runtimeOnly 'org.postgresql:postgresql'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

@@ -20,8 +20,8 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                        .requestMatchers(HttpMethod.GET, "/", "/books/**").permitAll().anyRequest().hasRole("employee")
-                        .anyRequest().authenticated())
+                        .requestMatchers(HttpMethod.GET, "/", "/books/**").permitAll()
+                        .anyRequest().hasRole("employee"))
                 .oauth2ResourceServer(oAuth2ResourceServer -> oAuth2ResourceServer.jwt(Customizer.withDefaults()))
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .csrf(AbstractHttpConfigurer::disable)
